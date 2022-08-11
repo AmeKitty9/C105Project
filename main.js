@@ -15,13 +15,13 @@ function take_snapshot()
 {
     Webcam.snap(function(data_uri) 
     {
-        document.getElementById("result").innerHTML = '<img id="captured_image" src"' + data_uri + '"/>'
+        document.getElementById("result").innerHTML = '<img id="captured_image" src="' + data_uri + '"/>'
     });
 }
 
-console.log('ml5 version', ml5.version);
+// console.log('ml5 version', ml5.version);
 
-classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/gNs0gc1yJ/', modelLoaded)
+classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/gNs0gc1yJ/model.json', modelLoaded)
 
 function modelLoaded()
 {
@@ -34,7 +34,7 @@ function check()
     classifier.classify(img, gotResult);
 }
 
-function gotResult(error, result)
+function gotResult(error, results)
 {
     if (error) {
         console.error(error);
